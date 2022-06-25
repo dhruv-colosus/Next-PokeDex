@@ -33,10 +33,12 @@ export async function getStaticProps({ params }) {
   const resp = await fetch(
     `https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`
   );
+
   return {
     props: {
       pokemon: await resp.json(),
     },
+    // revalidate: 30,
   };
 }
 
